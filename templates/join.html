@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- icon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <!-- socketio -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+        integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- google Material icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="{{url_for('static', filename='custom.css')}}">
+
+
+    <script type="text/javascript">
+        var myRoomID = "{{room_id}}";
+        var myName = "{{display_name}}";
+        var audioMuted = "{{mute_audio}}" == "1";
+        var videoMuted = "{{mute_video}}" == "1";
+        console.log(">> {{mute_audio}}, {{mute_video}}", audioMuted, videoMuted);
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Chat [{{room_id}}]</title>
+</head>
+
+<body>
+    <div id="video_grid" class="video-grid"></div>
+    <video id="local_vid" autoplay muted></video>
+
+    <script src="{{url_for('static', filename='video-manager.js')}}"></script>
+    <script src="{{url_for('static', filename='chatroom_ui.js')}}"></script>
+    <script src="{{url_for('static', filename='chatroom_networking.js')}}"></script>
+</body>
+
+</html>
