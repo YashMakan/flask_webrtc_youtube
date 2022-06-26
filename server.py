@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, session
 from flask_socketio import SocketIO, emit, join_room
+import platform
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "wubba lubba dub dub"
@@ -92,5 +93,5 @@ def on_data(data):
     socketio.emit('data', data, room=target_sid)
 
 
-if __name__ == "__main__":
+if any(platform.win32_ver()):
     socketio.run(app, debug=True)
